@@ -1,3 +1,9 @@
+import 'bootstrap';
 import '../styles/main.scss';
+import movies from './components/movies/movies';
 
-console.error('hi');
+const init = () => {
+  movies.initializeMovies();
+};
+
+init();
