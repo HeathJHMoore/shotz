@@ -6,6 +6,7 @@ import locations from './components/locations/locations';
 const init = () => {
   movies.initializeMovies();
   locations.initializelocations();
+  locations.eventListeners();
 };
 
 init();
