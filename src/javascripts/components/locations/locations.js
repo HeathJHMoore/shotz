@@ -25,9 +25,9 @@ const shootTimeClass = (shootTime) => {
   return selectedClass;
 };
 
-const domStringBuilder = () => {
+const domStringBuilder = (array) => {
   let domString = '';
-  locations.forEach((location) => {
+  array.forEach((location) => {
     domString += `<div class="card col-12 col-sm-8 col-md-6 col-lg-4 col-xl-2 ${shootTimeClass(location.shootTime)}" id="${location.id}" style="width: 18rem;">`;
     domString += `<img class="card-img-top" src="${location.imageUrl}" alt="Card image cap">`;
     domString += '<div class="card-body">';
@@ -44,9 +44,37 @@ const initializelocations = () => {
     .then((resp) => {
       const movieResults = resp.data.locations;
       locations = movieResults;
-      domStringBuilder();
+      domStringBuilder(locations);
     })
     .catch(err => console.error(err));
 };
 
-export default { initializelocations };
+const newDomBuilder = (e) => {
+  const button = e.target.textContent;
+  if (button === 'All') {
+    domStringBuilder(locations);
+  } else {
+    const newArray = [];
+    locations.forEach((place) => {
+      if (button === place.shootTime) {
+        newArray.push(place);
+      }
+    });
+    domStringBuilder(newArray);
+  }
+};
+
+const eventListeners = () => {
+  document.getElementById('All').addEventListener('click', newDomBuilder);
+  document.getElementById('Morning').addEventListener('click', newDomBuilder);
+  document.getElementById('Afternoon').addEventListener('click', newDomBuilder);
+  document.getElementById('Evening').addEventListener('click', newDomBuilder);
+  document.getElementById('Dark').addEventListener('click', newDomBuilder);
+};
+
+export default {
+  initializelocations,
+  eventListeners,
+  domStringBuilder,
+  locations,
+};
