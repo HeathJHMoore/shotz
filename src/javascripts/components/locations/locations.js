@@ -39,6 +39,16 @@ const domStringBuilder = (array) => {
   util.printToDom('locations', domString);
 };
 
+const filterByText = (e) => {
+  const searchText = e.target.value;
+  const searchLocations = locations.filter((x) => {
+    const hasName = x.name.includes(searchText);
+    const hasAdress = x.address.includes(searchText);
+    return hasName || hasAdress;
+  });
+  domStringBuilder(searchLocations);
+};
+
 const initializelocations = () => {
   locationsData.getLocationsData()
     .then((resp) => {
@@ -70,6 +80,7 @@ const eventListeners = () => {
   document.getElementById('Afternoon').addEventListener('click', newDomBuilder);
   document.getElementById('Evening').addEventListener('click', newDomBuilder);
   document.getElementById('Dark').addEventListener('click', newDomBuilder);
+  document.getElementById('searchInput').addEventListener('keyup', filterByText);
 };
 
 export default {
