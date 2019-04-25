@@ -60,6 +60,7 @@ const initializelocations = () => {
 };
 
 const newDomBuilder = (e) => {
+  console.error(e.target.id);
   const button = e.target.textContent;
   if (button === 'All') {
     domStringBuilder(locations);
@@ -83,9 +84,15 @@ const eventListeners = () => {
   document.getElementById('searchInput').addEventListener('keyup', filterByText);
 };
 
+const locationsGetter = () => {
+  const newLocations = locations;
+  return newLocations;
+};
+
 export default {
   initializelocations,
   eventListeners,
   domStringBuilder,
   locations,
+  locationsGetter,
 };
