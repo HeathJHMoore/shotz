@@ -8,6 +8,16 @@ const closeMovie = () => {
   document.getElementById('filters').style.visibility = 'visible';
 };
 
+const movieLocationsBuilder = (locations) => {
+  const locationObjects = [];
+  locationStuff.locationsGetter().forEach((place) => {
+    if (locations.indexOf(place.id) !== -1) {
+      locationObjects.push(place);
+    }
+  });
+  locationStuff.domStringBuilder(locationObjects);
+};
+
 const singleMovieBuilder = (movieToPrint) => {
   document.getElementById('filters').style.visibility = 'hidden';
   movieStuff.movieInfoGetter().forEach((film) => {
@@ -25,6 +35,8 @@ const singleMovieBuilder = (movieToPrint) => {
       domString += '</div>';
       util.printToDom('movies', domString);
       document.getElementById('close').addEventListener('click', closeMovie);
+      const locationsToPrint = film.locations;
+      movieLocationsBuilder(locationsToPrint);
     }
   });
 };
