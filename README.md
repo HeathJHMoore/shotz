@@ -4,6 +4,7 @@
 A website to keep track of 
 
 ## Screenshots
+![alt text](https://github.com/HeathJHMoore/shotz/blob/master/Screen%20Shot%202019-06-15%20at%2010.22.24%20AM.png)
 
 ## Installation Instructions
 * Clone down this repo
