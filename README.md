@@ -1,7 +1,7 @@
 # shotz
 
 ## Description
-A website to keep track of 
+A website to keep track of cool movies and where they were shot
 
 ## Screenshots
 ![alt text](https://github.com/HeathJHMoore/shotz/blob/master/Screen%20Shot%202019-06-15%20at%2010.22.24%20AM.png)
